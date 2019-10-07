@@ -4,7 +4,7 @@ import moment from 'moment';
 import { ETHER_ADDRESS, ether, tokens, RED,
   GREEN, BUY, SELL, POS_SIGN, NEG_SIGN, TOKEN_PRICE_FIELD, formatBalance } from '../helpers.js';
 
-const accountSelectorLambda = state => get(state, 'web3.account', 0x0);
+const accountSelectorLambda = state => get(state, 'web3.account');
 export const accountSelector = createSelector(accountSelectorLambda, account => account);
 
 const web3 = state => get(state, 'web3.connection');

@@ -51,6 +51,7 @@ class Balance extends Component {
   }
 
   async loadBlockchainData() {
+    console.log(this.props.account);
     await loadBalances(this.props.dispatch, this.props.web3,
       this.props.exchange, this.props.token, this.props.account);
   }
