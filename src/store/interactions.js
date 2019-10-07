@@ -28,8 +28,29 @@ import {
   orderMade
 } from './actions.js';
 
-export const loadWeb3 = (dispatch) => {
-  const web3 = new Web3(Web3.givenProvider || 'http://localhost:8545');
+export const loadWeb3 = async (dispatch) => {
+  let web3;
+  const ethereum = window.ethereum;
+  if (ethereum) {
+    web3 = new Web3(ethereum);
+    try {
+        // Request account access if needed
+        await ethereum.enable();
+    } catch (error) {
+        // User denied account access...
+        console.log('Access denied');
+    }
+  }
+  // Legacy dapp browsers...
+  else if (window.web3) {
+    web3 = new Web3(web3.currentProvider);
+  }
+  // Non-dapp browsers...
+  else {
+    console.log('Non-Ethereum browser detected. You should consider trying MetaMask!');
+  }
+
+  // const web3 = new Web3(Web3.givenProvider || 'http://localhost:8545');
   dispatch(web3Loaded(web3));
   return web3;
 };
