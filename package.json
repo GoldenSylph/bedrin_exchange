@@ -4,6 +4,10 @@
   "description": "Decentralized Ethereum Token Exchange",
   "author": "numeralhuman@gmail.com",
   "private": true,
+  "engines": {
+    "npm": "6.x",
+    "node": "10.16.3"
+  },
   "dependencies": {
     "apexcharts": "3.6.3",
     "babel-polyfill": "6.26.0",
